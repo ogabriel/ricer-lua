@@ -1,12 +1,26 @@
 local commands = {
-	install = {
-		description = "Installs a package",
+	install_setup = {
+		description = "Installs a setup",
 		usage = "install <package>",
 		cmd = function(args)
 			if args == nil or #args < 1 then
-				print("Usage: install <package1> [package2] ...")
+				print("Usage: install <setup1> [setup2] ...")
 				return
 			end
+
+			local setup = require("src.setup")
+			local valid_setups = {}
+
+			for _, setup_name in ipairs(args) do
+				if setup[setup_name] == nil then
+					print("Unknown setup " .. setup_name)
+				else
+					table.insert(valid_setups, setup[setup_name])
+				end
+			end
+
+			local runner = require("src.runner")
+			runner.run_setups(valid_setups)
 		end,
 	},
 	install_profile = {

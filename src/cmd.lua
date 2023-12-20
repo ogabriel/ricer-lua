@@ -19,6 +19,11 @@ local commands = {
 				end
 			end
 
+			if #valid_setups == 0 then
+				print("No valid setups found")
+				return
+			end
+
 			local runner = require("src.runner")
 			runner.run_setups(valid_setups)
 		end,
@@ -47,7 +52,7 @@ function cmd(command)
 		return
 	end
 
-	commands[command].cmd(table.unpack(arg, 2, #arg))
+	commands[command].cmd({ table.unpack(arg, 2, #arg) })
 end
 
 cmd(arg[1])

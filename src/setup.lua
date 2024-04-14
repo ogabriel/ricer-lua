@@ -54,9 +54,13 @@ return {
 			"libappindicator-gtk3",
 		},
 		after = function()
-			os.execute("modprobe btusb")
-			os.execute("sudo systemctl enable bluetooth.service")
-			os.execute("sudo systemctl start bluetooth.service")
+			local commands = {
+				"modprobe btusb",
+				"sudo systemctl enable bluetooth.service",
+				"sudo systemctl start bluetooth.service",
+			}
+
+			runner.run_commands(commands)
 		end,
 	},
 	fonts = {

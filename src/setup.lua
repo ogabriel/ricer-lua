@@ -187,4 +187,16 @@ return {
 			"arch-audit-gtk",
 		},
 	},
+	arch_rank_mirrors = {
+		before = function()
+			local commands = {
+				"sudo pacman -S --needed --noconfirm pacman-contrib curl",
+				"curl -0 https://archlinux.org/mirrorlist/all/https/ -o /tmp/mirrorlist",
+				"sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak",
+				"sudo rankmirrors -n 10 /tmp/mirrorlist | sudo tee /etc/pacman.d/mirrorlist",
+			}
+
+			runner.run_commands(commands)
+		end,
+	},
 }

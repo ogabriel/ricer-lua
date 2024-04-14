@@ -75,7 +75,7 @@ return {
 	},
 	hyprland = {
 		before = function()
-			os.execute("sudo pacman -R --noconfirm xdg-desktop-portal-gtk xdg-desktop-portal-wlr")
+			runner.run_command("sudo pacman -R --noconfirm xdg-desktop-portal-gtk xdg-desktop-portal-wlr")
 		end,
 		packages = {
 			"hyprland",
@@ -87,7 +87,7 @@ return {
 	},
 	hyprland_git = {
 		before = function()
-			os.execute("sudo pacman -R --noconfirm xdg-desktop-portal-gtk xdg-desktop-portal-wlr")
+			runner.run_command("sudo pacman -R --noconfirm xdg-desktop-portal-gtk xdg-desktop-portal-wlr")
 		end,
 		packages = {
 			"hyprland-git",
@@ -104,13 +104,21 @@ return {
 			"libappindicator-gtk3",
 		},
 		after = function()
-			os.execute("sudo systemctl enable NetworkManager.service")
-			os.execute("sudo systemctl start NetworkManager.service")
+			local commands = {
+				"sudo systemctl enable NetworkManager.service",
+				"sudo systemctl start NetworkManager.service",
+			}
+
+			runner.run_commands(commands)
 		end,
 	},
 	pacman = {
 		before = function()
 			local commands = {
+
+				-- TODO: refactor to check if pacman.conf is already configured
+				-- and only run the necessary commands
+
 				"sudo sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 5/' /etc/pacman.conf",
 				"sudo sed -i 's/#Color/Color\nILoveCandy/' /etc/pacman.conf",
 			}
@@ -132,8 +140,12 @@ return {
 			"sddm",
 		},
 		after = function()
-			os.execute("sudo systemctl enable sddm.service")
-			os.execute("sudo systemctl start sddm.service")
+			local commands = {
+				"sudo systemctl enable sddm.service",
+				"sudo systemctl start sddm.service",
+			}
+
+			runner.run_commands(commands)
 		end,
 	},
 	theme = {
@@ -163,11 +175,7 @@ return {
 	},
 	arch_keyring = {
 		before = function()
-			local commands = {
-				"sudo pacman -Syy --needed --noconfirm archlinux-keyring",
-			}
-
-			runner.run_commands(commands)
+			runner.run_command("sudo pacman -S --needed --noconfirm archlinux-keyring")
 		end,
 	},
 	arch_utils = {

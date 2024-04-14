@@ -1,16 +1,5 @@
 local setup = require("src.setup")
 
-local extra = {
-	packages = {
-		"mako",
-		"alacritty",
-		"waybar",
-		"swaylock",
-		"swayidle",
-		"rofi-lbonn-wayland",
-	},
-}
-
 return {
 	arch_hyprland_amd = {
 		setups = {
@@ -28,7 +17,17 @@ return {
 			setup.fonts,
 			setup.thunar,
 			setup.hyprland,
-			extra,
+			{
+				packages = {
+					"swaync",
+					"alacritty",
+					"waybar",
+					"swaylock",
+					"swayidle",
+					"rofi-lbonn-wayland",
+					"firefox",
+				},
+			},
 		},
 	},
 }

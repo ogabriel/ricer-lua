@@ -1,11 +1,13 @@
 local setup = require("src.setup")
+local runner = require("src.runner")
 
 return {
-	arch_hyprland_amd = {
+	hyprland = {
+		name = "Hyprland",
 		setups = {
 			{
 				before = function()
-					runner.run("sudo pacman -Syy")
+					runner.run_command("sudo pacman -Syy")
 				end,
 			},
 			setup.arch_keyring,

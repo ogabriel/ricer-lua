@@ -12,10 +12,13 @@ local extra = {
 }
 
 return {
-	hyprland = {
+	arch_hyprland_amd = {
 		setups = {
-			setup.pacman,
+			setup.arch_keyring,
 			setup.yay,
+			setup.arch_utils,
+			setup.amdmicrocode,
+			setup.amdgpu,
 			setup.sddm,
 			setup.audio,
 			setup.bluetooth,

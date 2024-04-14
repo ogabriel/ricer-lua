@@ -10,7 +10,7 @@ function M.run_commands(commands)
 end
 
 function M.run_packages(packages)
-	table.insert(packages, 1, "yay -Syu --needed --noconfirm")
+	table.insert(packages, 1, "yay -S --needed --noconfirm")
 	local command = table.concat(packages, " ")
 	M.run_command(command)
 end

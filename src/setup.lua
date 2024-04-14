@@ -161,4 +161,18 @@ return {
 			runner.run_commands(commands)
 		end,
 	},
+	arch_keyring = {
+		before = function()
+			local commands = {
+				"sudo pacman -Syy --needed --noconfirm archlinux-keyring",
+			}
+
+			runner.run_commands(commands)
+		end,
+	},
+	arch_utils = {
+		packages = {
+			"arch-audit-gtk",
+		},
+	},
 }

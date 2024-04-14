@@ -32,11 +32,27 @@ local commands = {
 		description = "Installs a profile",
 		usage = "install_profile <profile>",
 		cmd = function(args)
-			--verify only one item on args
-			if args == nil or #args ~= 1 then
+			if args == nil or #args < 1 then
 				print("Usage: install_profile <profile>")
 				return
 			end
+
+			if #args > 1 then
+				print("Only one profile can be installed at a time")
+				return
+			end
+
+			local profile_name = args[1]
+			local profile = require("src.profile")
+			local profile_table = profile[profile_name]
+
+			if profile_table == nil then
+				print("Unknown profile " .. args[1])
+				return
+			end
+
+			local runner = require("src.runner")
+			runner.run_profile(profile_table)
 		end,
 	},
 }

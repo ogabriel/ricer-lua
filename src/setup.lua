@@ -1,6 +1,16 @@
 local runner = require("src.runner")
 
 return {
+	amdmicrocode = {
+		packages = {
+			"amd-ucode",
+		},
+	},
+	intelmicrocode = {
+		packages = {
+			"intel-ucode",
+		},
+	},
 	amdgpu = {
 		packages = {
 			"mesa",
@@ -49,7 +59,6 @@ return {
 			os.execute("sudo systemctl start bluetooth.service")
 		end,
 	},
-
 	fonts = {
 		packages = {
 			"noto-fonts-emoji",

@@ -204,7 +204,7 @@ return {
 			local commands = {
 				"sudo pacman -S --needed --noconfirm reflector",
 				"sudo cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak",
-				"reflector --country BR,GB,US, --completion-percent 95 --protocol https --sort rate --download-timeout 60 --fastest 20 --threads 5 --save /etc/pacman.d/mirrorlist",
+				"sudo reflector --country BR,GB,US, --completion-percent 95 --protocol https --sort rate --download-timeout 60 --fastest 20 --threads 5 --save /etc/pacman.d/mirrorlist",
 			}
 
 			runner.run_commands(commands)

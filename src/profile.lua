@@ -12,6 +12,7 @@ return {
 			},
 			setup.arch_keyring,
 			setup.yay,
+			setup.arch_reflector,
 			setup.arch_utils,
 			setup.amdmicrocode,
 			setup.amdgpu,

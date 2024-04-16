@@ -21,3 +21,8 @@ jobs:
 
     - name: Build binary
       run: luastatic main.lua $(whereis lua | cut -d ' ' -f 2 | sed 's/bin\/lua//')/lib/liblua.a -I$(whereis lua | cut -d ' ' -f 2 | sed 's/bin\/lua//')/include -o ricer
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: ricer

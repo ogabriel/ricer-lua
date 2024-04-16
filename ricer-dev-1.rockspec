@@ -12,6 +12,8 @@ dependencies = {
 	"luastatic",
 }
 build = {
-	type = "builtin",
-	modules = {},
+   type = "builtin",
+   modules = {
+      main = "main.lua"
+   }
 }

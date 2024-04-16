@@ -18,3 +18,6 @@ jobs:
 
     - name: Install dependencies
       run: luarocks install --only-deps ricer-dev-1.rockspec
+
+    - name: Build binary
+      run: luastatic main.lua $(whereis lua | cut -d ' ' -f 2)/lib/liblua.a -I$(whereis lua | cut -d ' ' -f 2)/include -o ricer

@@ -24,6 +24,7 @@ return {
 			setup.theme,
 			setup.fonts,
 			setup.thunar,
+            setup.gnome,
 			setup.hyprland,
 			{
 				packages = {

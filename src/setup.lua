@@ -66,7 +66,7 @@ return {
 	fonts = {
 		packages = {
 			"noto-fonts-emoji",
-			"nerd-fonts-git",
+			"nerd-fonts",
 		},
 	},
 	gnome = {

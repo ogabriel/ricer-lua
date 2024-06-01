@@ -36,6 +36,8 @@ return {
 					"rofi-wayland",
                     "swww",
 					"firefox",
+                    "htop",
+                    "fastfetch",
 				},
 			},
 		},

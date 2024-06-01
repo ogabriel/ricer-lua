@@ -23,7 +23,7 @@ jobs:
       run: luarocks install --only-deps ricer-dev-1.rockspec
 
     - name: Build binary
-      run: luastatic main.lua $(whereis lua | cut -d ' ' -f 2 | sed 's/bin\/lua//')/lib/liblua.a -I$(whereis lua | cut -d ' ' -f 2 | sed 's/bin\/lua//')/include -o ricer -static
+      run: luastatic main.lua src/*.lua $(whereis lua | cut -d ' ' -f 2 | sed 's/bin\/lua//')/lib/liblua.a -I$(whereis lua | cut -d ' ' -f 2 | sed 's/bin\/lua//')/include -o ricer -static
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2

@@ -30,6 +30,9 @@ jobs:
     - name: Build binary
       run: luastatic main.lua src/*.lua $(whereis lua | cut -d ' ' -f 2 | sed 's/bin\/lua//')/lib/liblua.a -I$(whereis lua | cut -d ' ' -f 2 | sed 's/bin\/lua//')/include -o ricer -static
 
+    - name: Add execute permission
+      run: chmod +x ricer
+
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:

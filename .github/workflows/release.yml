@@ -30,3 +30,9 @@ jobs:
       with:
         name: ricer
         path: ricer
+
+    - name: Release
+      uses: softprops/action-gh-release@v2
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: ricer
